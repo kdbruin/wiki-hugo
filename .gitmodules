@@ -1,0 +1,8 @@
+[submodule "themes/blackburn"]
+	path = themes/blackburn
+	url = https://github.com/yoshiharuyamashita/blackburn.git
+	branch = master
+[submodule "public"]
+	path = public
+	url = git@github.com:kdbruin/kdbruin.github.io.git
+	branch = master
