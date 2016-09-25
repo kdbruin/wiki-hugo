@@ -1,6 +1,6 @@
 +++
 date = "2016-09-25T17:44:05+02:00"
-title = "welkom"
+title = "Welkom"
 
 +++
 
