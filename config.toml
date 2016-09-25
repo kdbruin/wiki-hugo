@@ -11,6 +11,10 @@ author = "Kees de Bruin"
 copyright = "&copy; 2016. All rights reserved."
 theme = "blackburn"
 
+[indexes]
+  tag = "tags"
+  topic = "topics"
+
 [menu]
   # Shown in the side menu.
   [[menu.main]]
