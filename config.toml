@@ -15,6 +15,9 @@ theme = "blackburn"
   tag = "tags"
   topic = "topics"
 
+[params]
+  custom_css = ["css/wiki-hugo.css"]
+
 [menu]
   # Shown in the side menu.
   [[menu.main]]

@@ -26,3 +26,16 @@ sudo /Applications/Install\ macOS\ Sierra.app/Contents/Resources/createinstallme
         --nointeraction
 ```
 
+Wanneer dit allemaal afgerond is, is de bootable USB stick met macOS Sierra beschikbaar. In de Finder zie je de stick als "Install macOS Sierra".
+
+## Installatie starten
+
+Om een schone installatie te doen, voer je de volgende stappen uit:
+
+ * Plaats de USB stick in de computer
+ * Start de computer op en houd de <span class="key">option</span> toets ingedrukt
+ * Kies vervolgens de bootable USB stick om het system te starten
+ * Start een schone installatie
+
+Bron: [macOS Sierra: Een installatie USB stick maken](https://www.appletips.nl/bootable-usb-stick-macos-sierra/)
+

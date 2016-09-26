@@ -1,0 +1,9 @@
+/* Key border */
+.key {
+	border: 1px solid;
+	padding: 2px 4px;
+	border-radius: 4px;
+	margin: 0 2px;
+	font-size: 90%;
+}
+
