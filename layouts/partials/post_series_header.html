@@ -1,0 +1,6 @@
+{{ if .Params.series }}
+    {{ $name := index .Params.series 0 }}
+    <div class="post-series-header">
+        Series: <a href="{{ "/series/" | relURL }}{{ $name | urlize }}/">{{ $name }}</a>
+    </div>
+{{ end }} 

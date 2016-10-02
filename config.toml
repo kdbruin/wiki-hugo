@@ -11,9 +11,13 @@ author = "Kees de Bruin"
 copyright = "&copy; 2016. All rights reserved."
 theme = "blackburn"
 
-[indexes]
+[permalinks]
+  post = "/:year/:month/:filename/"
+
+[taxonomies]
   tag = "tags"
   topic = "topics"
+  serie = "series"
 
 [params]
   custom_css = ["css/wiki-hugo.css"]

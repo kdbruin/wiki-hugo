@@ -1,0 +1,14 @@
+{{ if .Params.series }}
+    {{ $name := index .Params.series 0 }}
+    <div class="post-series-footer">
+    	<p><a href="" id="series"></a>Dit is een bericht uit de	<b>{{ $name }}</b> serie:</p>
+
+        {{ $name := $name | urlize }}
+        {{ $series := index .Site.Taxonomies.series $name }}
+        <ul class="series">
+        {{ range $series.Pages }}
+    	    <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+        {{ end }}
+        </ul>
+    </div>
+{{ end }}

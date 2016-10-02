@@ -4,6 +4,7 @@ description = ""
 tags = []
 title = "macOS Sierra Installatie USB Stick"
 topics = []
+series = ["macOS Sierra"]
 
 +++
 

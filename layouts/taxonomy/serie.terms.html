@@ -1,0 +1,24 @@
+{{ partial "header.html" . }}
+
+<div class="header">
+  <h1>{{ .Title }}</h1>
+</div>
+
+<div class="content">
+{{ $taxname := .Data.Plural }}
+{{ range $uglyTermName, $pages := .Data.Terms }}
+    {{ $page := index $pages 0 }}
+    {{ range $friendly := (index $page.Page.Params $taxname) }}
+        {{ if eq $uglyTermName ($friendly | urlize) }}
+            <h2><a href="/{{$taxname}}/{{$uglyTermName}}/"> {{ $friendly }} </a> &nbsp;({{len $pages}} entries)</h2>
+            <ul>
+                {{ range $taxpage := $pages }}
+                    <li><a href="{{ $taxpage.Page.Permalink }}">{{ $taxpage.Page.Title }}</a></li>
+                {{ end }}
+            </ul>
+        {{ end }}
+    {{ end }}
+{{ end }}
+</div>
+
+{{ partial "footer.html" . }}
