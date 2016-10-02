@@ -2,6 +2,10 @@
 
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
+# Remove the current files to prevent old files from poluting
+# the repository
+rm -rf public/*
+
 # Build the project.
 hugo
 
