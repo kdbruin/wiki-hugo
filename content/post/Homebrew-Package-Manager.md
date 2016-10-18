@@ -9,8 +9,10 @@ topics = []
 
 Standaard worden diverse applicaties en utility programma's geinstalleerd. Maar er
 ontbreken toch nog een aantal handige programma's, of de geinstalleerde programma's
-zijn niet helemaal up to date. Met behulp van (Homebrew)[http://brew.sh] kunnen we
+zijn niet helemaal up to date. Met behulp van [Homebrew](http://brew.sh) kunnen we
 hier wat aan doen.
+
+<!--more-->
 
 ## Installatie
 

@@ -12,6 +12,8 @@ series = ["macOS Sierra"]
 
 Via de Mac App Store moet je eerst het installatie programma van macOS Sierra downloaden. Wanneer de download klaar is, zal het installatie programma automatisch opstarten. Stop nu het installatie programma voordat je verder gaat.
 
+<!--more-->
+
 ## Voorbereiden USB stick
 
 De USB stick moet minimaal 8GB groot zijn. Plaats de USB stick in de computer en gebruik Disk Utility om deze te formatteren en een naam te geven, bijvoorbeeld "Install macOS Sierra".
