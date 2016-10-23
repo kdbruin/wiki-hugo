@@ -37,6 +37,12 @@ theme = "blackburn"
     identifier = "post"
     url = "/post/"
   [[menu.main]]
+    name = "Series"
+    pre = "<i class='fa fa-list fa-fw'></i>"
+    weight = 1
+    identifier = "series"
+    url = "/series/"
+  [[menu.main]]
     name = "About"
     pre = "<i class='fa fa-user fa-fw'></i>"
     weight = 2
@@ -48,3 +54,6 @@ theme = "blackburn"
     weight = 3
     url = "/contact/"
 
+[social]
+  github = "kdbruin"
+  stackoverflow = "2051151"
