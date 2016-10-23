@@ -16,7 +16,7 @@ echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 hugo
 
 # Sync with the deployment directory
-rsync -av --delete --exclude .git "$PUBLIC_DIR/" "../$DEPLOY_DIR"
+rsync -av --delete --exclude .git --exclude .gitkeep "$PUBLIC_DIR/" "../$DEPLOY_DIR"
 
 # Go to deployment directory
 cd "../$DEPLOY_DIR"
