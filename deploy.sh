@@ -1,16 +1,26 @@
 #!/usr/bin/env bash
 
-echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
+CURDIR="`pwd`"
 
-# Remove the current files to prevent old files from poluting
-# the repository
-rm -rf public/*
+PUBLIC_DIR=public
+DEPLOY_DIR=kdbruin.github.io
+
+if [ ! -d "../$DEPLOY_DIR" ]; then
+	echo 'Cannot find deployment repository'
+	exit 1
+fi
+
+echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
 # Build the project.
 hugo
 
-# Go To Public folder
-cd public
+# Sync with the deployment directory
+rsync -n -av --delete --exclude .git "$PUBLIC_DIR/" "../$DEPLOY_DIR"
+
+# Go to deployment directory
+cd "../$DEPLOY_DIR"
+
 # Add changes to git.
 git add -A
 
@@ -24,6 +34,6 @@ git commit -m "$msg"
 # Push source and build repos.
 git push origin master
 
-# Come Back
-cd ..
+# Come back
+cd "$CURDIR"
 
