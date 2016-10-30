@@ -1,5 +1,4 @@
 # Ignore all generated files in the public directory
 
 /public
-!/public
 !/public/.gitkeep
