@@ -2,7 +2,7 @@
 description = ""
 date = "2016-10-23T10:59:52+02:00"
 title = "Rsync Backup"
-draft = true
+draft = false
 tags = []
 topics = []
 
@@ -56,7 +56,12 @@ Using this set of tools requires that the Mac system has a running rsync daemon.
 </plist>
 ```
 
-This will start the rsync daemon at system startup. Place this file in the ```/Library/LaunchDaemons``` directory as e.g. ```org.samba.rsync.plist```.
+This will start the rsync daemon at system startup. Place this file in the ```/Library/LaunchDaemons``` directory as e.g. ```org.samba.rsync.plist``` and set the correct permissions on the file:
+
+```
+% sudo cp ~/rsync.plist /Library/LaunchDaemons/org.samba.rsync.plist
+% sudo chmod 644 /Library/LaunchDaemons/org.samba.rsync.plist
+```
 
 The configuration of the rsync daemon is placed in ```/usr/local/etc/rsyncd.conf```. Here I define the rsync names for the locations I want to backup:
 
@@ -83,16 +88,30 @@ Note that security is just on the network level but could be changed to somethin
 Install the rsync daemon using the following commands in a Terminal window:
 
 ```
-launchctl load /Library/LaunchDaemons/org.samba.rsync.plist
+% sudo launchctl load /Library/LaunchDaemons/org.samba.rsync.plist
+% sudo launchctl start org.samba.rsync
 ```
 
-This will load and start the rsync daemon.
+This will load and start the rsync daemon. To see if the daemon is running, use the following commands:
+
+```
+% launchctl list | grep rsync
+-   0   org.samba.rsync
+```
+
+To remove the rsync daemon:
+
+```
+% sudo launchctl unload /Library/LaunchDaemons/org.samba.rsync.plist
+% sudo killall rsync
+```
 
 ## Setting up the FreeBSD server
 
-On the FreeBSD server I added a dedicated user and group for the backup process:
+On the FreeBSD server as ```root``` add a dedicated user and group for the backup process:
 
 ```
+% su -
 $ pw groupadd timemachine
 $ pw useradd timemachine -g timemachine -d /vault/timemachine -m -s /usr/sbin/nologin
 ```
@@ -101,8 +120,25 @@ This will add a user and group ```timemachine``` with a home directory set but n
 
 ```
 $ su -m timemachine
+timemachine% cd /vault/timemachine
 timemachine% mkdir bin etc logs snapshots
 ```
+
+### SSH keys
+
+For proper authentication and encryption rsnapshot uses SSH so we need to create the proper keys:
+
+```
+timemachine% ssh-keygen -t rsa
+```
+
+Leave the passphrase empty so only the SSH key is used for authentication. Now copy the generated public key to the machines that need to be backed up. Use the ```ssh-copy-id``` utility for this:
+
+```
+timemachine% ssh-copy-id /vault/timemachine/.ssh/id_rsa.pub kdb@172.16.123.7
+```
+
+When prompted supply the password for the remote user. This will add the public key to the ```authorized_keys``` file on the remote system.
 
 ### rsnapshot
 
@@ -137,7 +173,13 @@ backup          rsync://172.16.123.7/kdb/       imac/
 backup          rsync://172.16.123.7/usb/       imac-usb/
 ```
 
-See the rsnapshot documentation for a complete explanation for each option. I've opted to disable the non-daily backups as they assume that the system being backed up is always available. As this is not the case for me I increased the daily backups to 14. The backup itself is initiated by the following script:
+See the rsnapshot documentation for a complete explanation for each option. The syntax of the configuration can be checked using the following command:
+
+```
+timemachine% rsnapshot -c /vault/timemachine/etc/rsnapshot-imac.conf configtest
+```
+
+I've opted to disable the non-daily backups as they assume that the system being backed up is always available. As this is not the case for me I increased the daily backups to 14. The backup itself is initiated by the following script:
 
 ```
 #! /bin/sh
@@ -317,4 +359,32 @@ bower_components/
 /Music/iTunes/iTunes Media/Mobile Applications
 /Music/iTunes/iTunes Media/Podcasts
 /Music/Subscriptions
+```
+
+### Creating a backup
+
+With the following command we can see what is executed by rsnapshot for a daily backup:
+
+```
+timemachine% rsnapshot -c etc/rsnapshot-imac.conf -t daily
+```
+
+To make an actual backup remove the ```-t``` option. Add the ```-v``` option for a more verbose output.
+
+### Automatic backups
+
+To create automatic backups we need to create a crontab entry for the backup command. We use our backup script instead of directly calling rsnapshot:
+
+```
+timemachine% crontab -e
+```
+
+Add the following lines to start a backup at 3:30AM and mail the output to the given user:
+
+```
+SHELL=/bin/sh
+PATH=/usr/bin:/bin:/usr/local/bin
+MAILTO=user@example.com
+
+30 3 * * *	/vault/timemachine/bin/backup-imac.sh daily
 ```

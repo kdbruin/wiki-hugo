@@ -25,7 +25,7 @@ Follow the directions on the screen and the Homebrew package manager will be ins
 
 At least the following packages need to be installed:
 
-* ```rsync```
+* ```homebrew/dupes/rsync```
 * ```wget```
 * ```python```
 
