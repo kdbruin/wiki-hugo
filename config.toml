@@ -43,15 +43,21 @@ theme = "blackburn"
     identifier = "series"
     url = "/series/"
   [[menu.main]]
+    name = "Software"
+    pre = "<i class='fa fa-desktop fa-fw'></i>"
+    weight = 2
+    identifier = "software"
+    url = "/software/"
+  [[menu.main]]
     name = "About"
     pre = "<i class='fa fa-user fa-fw'></i>"
-    weight = 2
+    weight = 3
     identifier = "about"
     url = "/about/"
   [[menu.main]]
     name = "Contact"
     pre = "<i class='fa fa-phone fa-fw'></i>"
-    weight = 3
+    weight = 4
     url = "/contact/"
 
 [social]
