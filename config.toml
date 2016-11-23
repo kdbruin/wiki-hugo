@@ -58,6 +58,7 @@ theme = "blackburn"
     name = "Contact"
     pre = "<i class='fa fa-phone fa-fw'></i>"
     weight = 4
+    identifier = "contact"
     url = "/contact/"
 
 [social]
