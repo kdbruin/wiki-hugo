@@ -1,7 +1,6 @@
 +++
 date = "2017-07-28T11:53:26+02:00"
 title = "Open with Visual Studio Code"
-draft = true
 tags = []
 topics = []
 description = ""

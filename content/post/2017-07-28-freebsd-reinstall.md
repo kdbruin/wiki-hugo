@@ -1,7 +1,6 @@
 +++
 title = "A Clean Freebsd Install"
 date = 2017-07-28T12:00:50+02:00
-draft = true
 tags = []
 topics = []
 description = ""
