@@ -8,7 +8,7 @@ baseurl = "https://kdbruin.github.io/"
 languageCode = "en-us"
 title = "Mijn Wiki"
 author = "Kees de Bruin"
-copyright = "&copy; 2016. All rights reserved."
+copyright = "&copy; 2016-2017. All rights reserved."
 theme = "blackburn"
 
 [permalinks]
@@ -27,37 +27,37 @@ theme = "blackburn"
   [[menu.main]]
     name = "Home"
     pre = "<i class='fa fa-home fa-fw'></i>"
-    weight = 0
+    weight = 1
     identifier = "home"
     url = "/"
   [[menu.main]]
     name = "Posts"
     pre = "<i class='fa fa-list fa-fw'></i>"
-    weight = 1
+    weight = 2
     identifier = "post"
     url = "/post/"
   [[menu.main]]
     name = "Series"
     pre = "<i class='fa fa-list fa-fw'></i>"
-    weight = 1
+    weight = 2
     identifier = "series"
     url = "/series/"
   [[menu.main]]
     name = "Software"
     pre = "<i class='fa fa-desktop fa-fw'></i>"
-    weight = 2
+    weight = 3
     identifier = "software"
     url = "/software/"
   [[menu.main]]
     name = "About"
     pre = "<i class='fa fa-user fa-fw'></i>"
-    weight = 3
+    weight = 4
     identifier = "about"
     url = "/about/"
   [[menu.main]]
     name = "Contact"
     pre = "<i class='fa fa-phone fa-fw'></i>"
-    weight = 4
+    weight = 5
     identifier = "contact"
     url = "/contact/"
 
