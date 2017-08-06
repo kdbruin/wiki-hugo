@@ -1,6 +1,6 @@
 +++
 title = "{{ replace .TranslationBaseName "-" " " | replaceRE "^\\d\\d\\d\\d \\d\\d \\d\\d " "" | title }}"
-date = {{ substr .TranslationBaseName 0 10 }}
+date = {{ substr .TranslationBaseName 0 10 }}{{ substr .Date 10 }}
 draft = true
 tags = []
 topics = []
