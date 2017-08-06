@@ -20,6 +20,7 @@ theme = "blackburn"
   serie = "series"
 
 [params]
+  dateFormat = "02 January 2006"
   custom_css = ["css/wiki-hugo.css"]
 
 [menu]
